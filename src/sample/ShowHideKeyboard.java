@@ -8,7 +8,6 @@ import org.frikadelki.ash.telegram.api.keyboard.ReplyKeyboardMarkup;
 import org.frikadelki.ash.telegram.api.message.TgmMessage;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * Created by d.morozov on 20/08/16.
@@ -32,26 +31,21 @@ class ShowHideKeyboard extends BotUpdatesRunLoop
 
             if (count % 2 == 1)
             {
-                ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
-                replyKeyboardMarkup.setResizeKeyboard(true);
-                replyKeyboardMarkup.setOneTimeKeyboard(true);
-                ArrayList<ArrayList<KeyboardButton>> keyboard = new ArrayList<ArrayList<KeyboardButton>>();
-                ArrayList<KeyboardButton> keyboardRow = new ArrayList<KeyboardButton>();
-                KeyboardButton keyboardButton = new KeyboardButton();
-                keyboardButton.setText("action1");
-                keyboardButton.setRequestEntity(KeyboardButton.RequestEntity.LOCATION);
-                keyboardRow.add(keyboardButton);
-                keyboard.add(keyboardRow);
-
-                replyKeyboardMarkup.setKeyboard(keyboard);
-
-                replyMarkup = replyKeyboardMarkup;
-            } else
+                replyMarkup = ReplyKeyboardMarkup
+                        .builder()
+                        .resizeKeyboard(true)
+                        .oneTimeKeyboard(true)
+                        .keyboardRow()
+                        .button("asdf1")
+                        .button("asdf2", KeyboardButton.Type.CONTACT)
+                        .keyboardRow()
+                        .button("qwer2")
+                        .button("qwer2", KeyboardButton.Type.LOCATION)
+                        .build();
+            }
+            else
             {
-                ReplyKeyboardHide replyKeyboardHide = new ReplyKeyboardHide();
-                replyKeyboardHide.setHideKeyboard(true);
-
-                replyMarkup = replyKeyboardHide;
+                replyMarkup = new ReplyKeyboardHide(true);
             }
 
             bot.getApi().getChatApi().sendMessage(TgmBotApiChat.SendMessageParams
