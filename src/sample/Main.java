@@ -19,6 +19,7 @@ public class Main extends Application
 
     public static void main(String[] args)
     {
+        (new ShowHideKeyboard()).run();
         launch(args);
     }
 }
