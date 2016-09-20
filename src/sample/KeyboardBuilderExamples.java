@@ -2,8 +2,8 @@ package sample;
 
 import org.frikadelki.ash.telegram.api.keyboard.TgmKeyboardButton;
 import org.frikadelki.ash.telegram.api.keyboard.TgmReplyKeyboardMarkup;
-import org.frikadelki.ash.telegram.api.keyboard.builders.TgmKeyboardBuilder;
-import org.frikadelki.ash.telegram.api.keyboard.builders.TgmKeyboardRowBuilder;
+import org.frikadelki.ash.telegram.api.keyboard.builders.TgmKeyboardBuilderOld;
+import org.frikadelki.ash.telegram.api.keyboard.builders.TgmKeyboardRowBuilderOld;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ public class KeyboardBuilderExamples {
 
 	{
 		//конструируем отельно row когда-то
-		List<TgmKeyboardButton> keyboardRow1 = TgmKeyboardRowBuilder
+		List<TgmKeyboardButton> keyboardRow1 = TgmKeyboardRowBuilderOld
 			.make()
 			.button("qqq1")
 			.button("qqq2", TgmKeyboardButton.Type.CONTACT)
@@ -41,7 +41,7 @@ public class KeyboardBuilderExamples {
 
 	{
 		//конструируем отельно клаву когда-то
-		List<List<TgmKeyboardButton>> keyboard = TgmKeyboardBuilder
+		List<List<TgmKeyboardButton>> keyboard = TgmKeyboardBuilderOld
 			.make()
 			.row()
 			.button("test1")
